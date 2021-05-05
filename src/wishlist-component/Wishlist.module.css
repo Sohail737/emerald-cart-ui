@@ -1,0 +1,65 @@
+/* @import "https://emerald-css.netlify.app/emerald.css"; */
+
+:root {
+  --primary-color: rgb(102, 51, 153);
+  --secondary-color: rgb(147, 197, 253);
+  --white: rgb(255, 255, 255);
+  --grey: rgb(175, 168, 168);
+  --light-grey: #ebebeb;
+  --black: rgb(0, 0, 0);
+  --red: rgb(253, 2, 2);
+}
+
+.wishlist {
+  margin-top: 8rem;
+}
+
+.wishlistContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  max-width: 80%;
+  margin: auto;
+}
+
+.cancelBtn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+/* Override emerald's CSS */
+.wishlistCardBtn {   
+  width: 100%;
+  margin: auto;
+}
+
+.wishlistCard {
+  border: none;
+  padding:0;
+  cursor:pointer;
+}
+
+.wishlistCard:hover{
+  box-shadow: 0 6px 6px var(--grey);;
+}
+
+.wishlistCardHeading {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.emptyWishList{
+  text-align:center;
+}
+
+/* mobile css */
+@media screen and (max-width: 700px) {
+  .wishlistContainer {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.5rem;
+    max-width:100%;
+    padding:0.5rem;
+  }
+}

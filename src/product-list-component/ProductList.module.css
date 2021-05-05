@@ -1,0 +1,124 @@
+/* @import "https://emerald-css.netlify.app/emerald.css"; */
+
+:root {
+  --primary-color: rgb(102, 51, 153);
+  --secondary-color: rgb(147, 197, 253);
+  --white: rgb(255, 255, 255);
+  --grey: rgb(175, 168, 168);
+  --light-grey: #ebebeb;
+  --black: rgb(0, 0, 0);
+  --red: rgb(253, 2, 2);
+}
+
+.productList {
+  display: grid;
+  grid-area: product;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 2rem;
+  margin: auto;
+  margin-top: 8rem;
+  padding:0.5rem;
+  margin-left:2rem
+}
+
+.card-sub-heading {
+  display: block;
+  margin: 0.3rem 0;
+  padding: 0.3rem 0;
+}
+
+.productListLayout {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-column-gap: 0.5rem;
+  grid-template-areas:
+    "filter product product"
+    "filter product product"
+    "filter product product";
+}
+
+.wishlistBadge {
+  color: var(--grey);
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.wishlistBadgeAdded {
+  composes: wishlistBadge;
+  color: var(--red);
+}
+.wishlistBadgeDisabled {
+  composes: wishlistBadge;
+  pointer-events: none;
+}
+
+/* Override Emerald's CSS */
+.productCardBtn {
+  width: 100%;
+  margin: auto;
+}
+
+.productCard {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.productCard:hover {
+  box-shadow: 0 6px 6px var(--grey);
+}
+
+.productCard .wishlistBadge::before {
+  pointer-events: none;
+}
+.productCardHeading {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+}
+.filterButtonContainer {
+  visibility: hidden;
+}
+
+/* mobile css */
+@media screen and (max-width: 700px) {
+  .productListLayout {
+    grid-template-columns: 1fr;
+    grid-column-gap: 0.5rem;
+    grid-template-areas: "product";
+    margin-bottom:5rem;
+  }
+  .productList {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.5rem;
+    padding: 0.5rem;
+    margin-left:0;
+  }
+
+  .filterButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    z-index: 5;
+    background-color: var(--white);
+    visibility: visible;
+    box-shadow:  0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%),
+    0 1px 18px 0 rgb(0 0 0 / 12%);
+  }
+
+  .filterButton {
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+  }
+}

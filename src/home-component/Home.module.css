@@ -1,0 +1,66 @@
+/* @import "https://emerald-css.netlify.app/emerald.css"; */
+
+:root {
+  --primary-color: rgb(102, 51, 153);
+  --secondary-color: rgb(147, 197, 253);
+  --white: rgb(255, 255, 255);
+  --grey: rgb(175, 168, 168);
+  --light-grey: #ebebeb;
+  --black: rgb(0, 0, 0);
+  --red: rgb(253, 2, 2);
+}
+
+.home {
+  max-width: 80%;
+  margin: auto;
+  margin-top: 8rem;
+}
+
+.card-footer > .btn {
+  width: 100%;
+}
+
+.categoryLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+/* Override Emerals's CSS */
+.card {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.card:hover {
+  box-shadow: 0 6px 6px var(--grey);
+}
+
+.avatar {
+  object-fit: cover !important;
+  display: block;
+  margin: auto;
+}
+
+.avatarName {
+  text-align: center;
+}
+
+.explore{
+  width:100%;
+  margin:0.5rem;
+}
+
+/* mobile css */
+@media screen and (max-width: 700px) {
+  .categoryLayout {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .home{
+    max-width:100%;
+  }
+}

@@ -1,0 +1,113 @@
+/* @import "https://emerald-css.netlify.app/emerald.css"; */
+
+:root {
+  --primary-color: rgb(102, 51, 153);
+  --secondary-color: rgb(147, 197, 253);
+  --white: rgb(255, 255, 255);
+  --grey: rgb(175, 168, 168);
+  --light-grey: #ebebeb;
+  --black: rgb(0, 0, 0);
+  --red: rgb(253, 2, 2);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  margin-bottom: 1rem;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.logo {
+  margin-left: 1.5rem;
+  padding: 0.5rem;
+  align-self: center;
+  line-height: 0;
+}
+
+.logo > img {
+  width: 4rem;
+  height: 4rem;
+}
+
+.heading {
+  /* width: 30%; */
+}
+
+:global(.nav) {
+  align-items: flex-end;
+}
+
+:global(.nav-item) {
+  cursor: pointer;
+}
+
+:global(.nav-item.active) {
+  font-weight: bold;
+}
+
+:global(.nav-item > a) {
+  color: var(--white) !important;
+}
+
+.cartWishlist {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cartWishlist > svg {
+  height: 2rem;
+  width: 2rem;
+}
+
+.navPills {
+  composes: cartWishlist;
+}
+
+.hamburger {
+  display: none;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  align-self: center;
+  line-height: 0;
+}
+
+.hamburger > svg {
+  color: var(--white);
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+:global(.badge) {
+  left: 1.3rem;
+  bottom: 1.2rem;
+  background-color: red;
+}
+
+/* mobile css */
+@media screen and (max-width: 700px) {
+  .header {
+    justify-content: flex-start;
+  }
+
+  /* :global(.badge) {
+    top: 0;
+    right: 0;
+    background-color: red;
+  } */
+  .navPills {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}

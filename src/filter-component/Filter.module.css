@@ -1,0 +1,85 @@
+/* @import "https://emerald-css.netlify.app/emerald.css"; */
+
+:root {
+  --primary-color: rgb(102, 51, 153);
+  --secondary-color: rgb(147, 197, 253);
+  --white: rgb(255, 255, 255);
+  --grey: rgb(175, 168, 168);
+  --light-grey: #ebebeb;
+  --black: rgb(0, 0, 0);
+  --red: rgb(253, 2, 2);
+}
+
+.filter {
+  grid-area: filter;
+  display: block;
+  position: fixed;
+  top: 8rem;
+  overflow-y: auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  height: calc(100vh - 8rem);
+}
+
+.filterHidden{
+  display:none;
+}
+
+.filter > h3,
+h4 {
+  padding: 0.2rem 0.5rem;
+  margin: 0.2rem 0.5rem;
+  text-align: left;
+}
+
+.filterContainer {
+  margin-left: 1rem;
+}
+
+.select {
+  margin: 0.2rem 1rem;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.filterCheckbox {
+  margin-right: 1rem;
+}
+
+.filterOverlay{
+  position: fixed;
+ 
+}
+
+/* mobile css */
+@media screen and (max-width: 700px) {
+  .filter{
+    background-color: var(--white);
+    top:revert;
+    bottom:0;
+    width: 100vw;
+    height: auto;
+    display:none;
+
+  }
+
+  .filterOpen{
+    composes:filter;
+    display: block;
+    z-index:999;
+  }
+
+  .filterOverlay{
+    display: none;
+    width:100vw;
+    height:100vh;
+    background:rgba(255,255,255,0.5)
+  
+  }
+  .filterOverlayOpen{
+    composes:filterOverlay;
+    display:block;
+    z-index:99
+  }
+
+}

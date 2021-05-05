@@ -1,0 +1,33 @@
+/* @import "https://emerald-css.netlify.app/emerald.css"; */
+
+:root {
+  --primary-color: rgb(102, 51, 153);
+  --secondary-color: rgb(147, 197, 253);
+  --white: rgb(255, 255, 255);
+  --grey: rgb(175, 168, 168);
+  --light-grey: #ebebeb;
+  --black: rgb(0, 0, 0);
+  --red:rgb(253, 2, 2);
+}
+
+.toast{
+    bottom:1rem;
+    right:40%;
+    z-index:9999;
+}
+
+.toastHidden{
+    composes:toast;
+    visibility: hidden;
+}
+
+.toastVisible{
+    composes:toast;
+    visibility: visible;
+}
+
+@media screen and (max-width: 700px) {
+    .toast{
+        right:25%;
+    }
+  }
