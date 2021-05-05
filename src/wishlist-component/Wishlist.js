@@ -36,7 +36,7 @@ export const Wishlist = () => {
         });
         dispatchToast({
           type: "TOAST_MESSAGE",
-          payload: { toastMessage: "Added to cart" },
+          payload: { toastMessage: "Added to wishlist" },
         });
         dispatchToast({ type: "TOGGLE_TOAST", payload: true });
         dispatchToCartAndWishlist({

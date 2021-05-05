@@ -44,7 +44,7 @@ function App() {
   return (
     <div className="App">
       <Navigation/>
-      <Toast message={toastMessage} type={toastType} duration={100000} />
+      <Toast message={toastMessage} type={toastType} duration={3000} />
       {/* {route === routeNames.productList && <ProductList route={route} setRoute={setRoute} />}
       {route === routeNames.cart && <Cart />}
       {route === routeNames.wishlist && <Wishlist setRoute={setRoute}/>} */}
