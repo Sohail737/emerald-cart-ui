@@ -12,6 +12,11 @@ import { Home } from "./home-component/Home";
 import { Toast } from "./toast-component/Toast";
 import { useToast } from "./context/ToastProvider";
 import { ProductDetail } from "./product-detail-component/ProductDetail";
+import { Account } from "./account-component/Account";
+import { Login } from "./login-component/Login";
+import { Signup } from "./signup-component/Signup";
+import { AccountDetail } from "./account-detail-component/AccountDetail";
+import { PrivateRoute } from "./PrivateRoutes";
 
 function App() {
   const { cartAndWishlistState, dispatchToCartAndWishlist } = useCartAndWishlist();
@@ -53,8 +58,13 @@ function App() {
         <Route path="/home" element={<Home/>}></Route>
         <Route path="/products" element={<ProductList/>}></Route>
         <Route path="/products/:productId" element={<ProductDetail/>}></Route>
-        <Route path="/cart" element={<Cart/>}></Route>
-        <Route path="/wishlist" element={<Wishlist/>}></Route>
+        <PrivateRoute path="/cart" element={<Cart/>}></PrivateRoute>
+        <PrivateRoute path="/wishlist" element={<Wishlist/>}></PrivateRoute>
+        <Route path="/account" element={<Account />}>
+          <Route path="login" element={<Login />}></Route>
+          <Route path="signup" element={<Signup />}></Route>
+          <PrivateRoute path="details" element={<AccountDetail />}></PrivateRoute>
+        </Route>
       </Routes>
 
     </div>

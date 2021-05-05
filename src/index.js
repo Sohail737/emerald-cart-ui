@@ -6,18 +6,20 @@ import { CartAndWishlistProvider } from "./context/CartAndWishlistProvider";
 import { ProgressStateProvider } from "./context/ProgressStateProvider";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ToastProvider } from "./context/ToastProvider";
-
+import { AuthProvider } from "./context/AuthProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <CartAndWishlistProvider>
+      <AuthProvider>
+        <CartAndWishlistProvider>
           <ProgressStateProvider>
             <ToastProvider>
               <App />
             </ToastProvider>
           </ProgressStateProvider>
-      </CartAndWishlistProvider>
+        </CartAndWishlistProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

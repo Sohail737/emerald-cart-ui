@@ -24,6 +24,17 @@ const components = [
       </svg>
     ),
   },
+  {
+    name: "Account",
+    svg: (
+      <svg width="1em" height="1em" viewBox="0 0 24 24">
+        <path
+          d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"
+          fill="currentColor"
+        ></path>
+      </svg>
+    ),
+  },
 ];
 
 export const NavigationAside = ({ isAsideOpen, setIsAsideOpen }) => {
@@ -34,7 +45,7 @@ export const NavigationAside = ({ isAsideOpen, setIsAsideOpen }) => {
           setIsAsideOpen((isAsideOpen) => !isAsideOpen);
           // e.stopPropagation();
         }}
-        className={isAsideOpen ? styles.asideOverlayOpen:styles.asideOverlay}
+        className={isAsideOpen ? styles.asideOverlayOpen : styles.asideOverlay}
       ></div>
       <div className={isAsideOpen ? styles.asideOpen : styles.aside}>
         <ul className="stacked-list">
@@ -42,8 +53,8 @@ export const NavigationAside = ({ isAsideOpen, setIsAsideOpen }) => {
             return (
               <li class="list-item">
                 <NavLink
-                  to={`/${comp.name.toLowerCase()}`}
-                  onClick={()=>setIsAsideOpen(isAsideOpen=>!isAsideOpen)}
+                  to={comp.name==="Account"?`/account/details`:`/${comp.name.toLowerCase()}`}
+                  onClick={() => setIsAsideOpen((isAsideOpen) => !isAsideOpen)}
                   className={styles.asideNavPills}
                 >
                   <div className="list-item-left">{comp.svg}</div>
