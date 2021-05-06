@@ -8,6 +8,9 @@ import { useEffect, useState } from "react";
 import { Preloader } from "../pre-loader-component/Preloader";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useToast } from "../context/ToastProvider";
+import { useAuthModal } from "../context/AutModalProvider";
+import { useAuth } from "../context/AuthProvider";
+import { AuthModal } from "../auth-modal-component/AuthModal";
 
 export const ProductList = ({}) => {
   const {
@@ -20,6 +23,10 @@ export const ProductList = ({}) => {
   const [productList, setProductList] = useState([]);
   const [showFilter, setShowFilter] = useState(false);
   const { dispatchToast } = useToast();
+  const {openModal,setOpenModal,showModal}=useAuthModal()
+  const {isUserLoggedIn}=useAuth()
+  const location = useLocation();
+  const path=location.pathname;
 
   useEffect(() => {
     (async () => {
@@ -371,6 +378,7 @@ export const ProductList = ({}) => {
 
   return (
     <div className={styles.productListLayout}>
+      {openModal && !isUserLoggedIn &&(<AuthModal setOpenModal={setOpenModal} path={path} />)}
       {productPageState === "loading" ? (
         <Preloader />
       ) : (
@@ -400,8 +408,14 @@ export const ProductList = ({}) => {
                     <img src={product.image} alt="" />
                     <svg
                       onClick={(e) => {
-                        addToWishlist(product);
-                        e.stopPropagation();
+                        if (isUserLoggedIn) {
+                          addToWishlist(product);
+                          e.stopPropagation();
+                        } else {
+                          showModal();
+                          e.stopPropagation();
+                        }
+                        
                       }}
                       className={
                         cart &&

@@ -1,12 +1,15 @@
 import styles from "./ProductDetail.module.css";
 import { useAxios } from "../custom-hooks/Axios";
-import { useNavigate, useParams } from "react-router";
-import { useState,useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router";
+import { useState, useEffect } from "react";
 import { discountCalc } from "../misc/util";
 import { useCartAndWishlist } from "../context/CartAndWishlistProvider";
 import { useProgressState } from "../context/ProgressStateProvider";
 import { useToast } from "../context/ToastProvider";
 import { Preloader } from "../pre-loader-component/Preloader";
+import { useAuth } from "../context/AuthProvider";
+import { AuthModal } from "../auth-modal-component/AuthModal";
+import { useAuthModal } from "../context/AutModalProvider";
 
 export const ProductDetail = () => {
   const { callApi } = useAxios();
@@ -19,6 +22,10 @@ export const ProductDetail = () => {
   const navigate = useNavigate();
   const { appState, dispatchAppState } = useProgressState();
   const { dispatchToast } = useToast();
+  const { openModal, setOpenModal, showModal } = useAuthModal();
+  const { isUserLoggedIn } = useAuth();
+  const location = useLocation();
+  const path = location.pathname;
   useEffect(() => {
     (async () => {
       try {
@@ -269,6 +276,9 @@ export const ProductDetail = () => {
         <Preloader />
       ) : (
         <>
+          {openModal && !isUserLoggedIn && (
+            <AuthModal setOpenModal={setOpenModal} path={path} />
+          )}
           <div className={styles.detailImage}>
             <img src={product.image} alt=""></img>
           </div>
@@ -311,14 +321,20 @@ export const ProductDetail = () => {
                 </span>
               </div>
               <div className="card-footer">
-                {cart &&
+                {!isUserLoggedIn || cart &&
                 (cart.filter((item) => item.product._id === product._id)
                   .length === 0 ||
                   cart.filter((item) => item.product._id === product._id)[0][
                     "wishlisted"
                   ] === false) ? (
                   <button
-                    onClick={() => addToWishlist(product)}
+                    onClick={() => {
+                      if (isUserLoggedIn) {
+                        addToWishlist(product);
+                      } else {
+                        showModal();
+                      }
+                    }}
                     className={
                       cartStateInProductPage.status === "loading" &&
                       cartStateInProductPage.productId === product._id
@@ -330,7 +346,13 @@ export const ProductDetail = () => {
                   </button>
                 ) : (
                   <button
-                    onClick={() => addToWishlist(product)}
+                    onClick={() => {
+                      if (isUserLoggedIn) {
+                        addToWishlist(product);
+                      } else {
+                        showModal();
+                      }
+                    }}
                     className={
                       cartStateInProductPage.status === "loading" &&
                       cartStateInProductPage.productId === product._id
@@ -345,7 +367,7 @@ export const ProductDetail = () => {
                   <button className="btn disabled margin large">
                     Out of Stock
                   </button>
-                ) : cart &&
+                ) : !isUserLoggedIn || cart &&
                   (cart.filter(
                     (itemInCart) => itemInCart.product._id === product._id
                   ).length === 0 ||
@@ -359,7 +381,13 @@ export const ProductDetail = () => {
                         ? "btn disabled margin-left large"
                         : "btn primary margin-left large"
                     }
-                    onClick={() => addToCart(product)}
+                    onClick={() =>{
+                      if (isUserLoggedIn) {
+                        addToCart(product)
+                      } else {
+                        showModal();
+                      }
+                    } }
                   >
                     Add To Cart
                   </button>

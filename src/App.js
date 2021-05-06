@@ -53,6 +53,7 @@ function App() {
       {/* {route === routeNames.productList && <ProductList route={route} setRoute={setRoute} />}
       {route === routeNames.cart && <Cart />}
       {route === routeNames.wishlist && <Wishlist setRoute={setRoute}/>} */}
+      
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/home" element={<Home/>}></Route>

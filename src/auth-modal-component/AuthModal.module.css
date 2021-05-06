@@ -1,0 +1,42 @@
+:root {
+    --primary-color: rgb(102, 51, 153);
+    --secondary-color: rgb(147, 197, 253);
+    --white: rgb(255, 255, 255);
+    --grey: rgb(175, 168, 168);
+    --light-grey: #ebebeb;
+    --black: rgb(0, 0, 0);
+    --red: rgb(253, 2, 2);
+  }
+
+.modalContainer{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    position: fixed;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    background-color:rgba(255,255,255,0.8);
+    z-index:999
+}
+
+.authModalContentContainer{
+    max-width:20rem;
+    max-height:20rem;
+    background-color:var(--white);
+    z-index:9999;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding: 0.5rem;
+}
+
+.modalClose{
+    position:absolute;
+    top:1rem;
+    right:1rem;
+    width:1rem;
+    height:1rem;
+    cursor: pointer;
+}
