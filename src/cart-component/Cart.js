@@ -263,9 +263,7 @@ export const Cart = () => {
                                   ? "Fast delivery available"
                                   : "Standard Delivery"}
                               </span>
-                              {/* <span className={styles.productDescription}>
-                                Seller {itemInCart.seller}
-                              </span> */}
+                              
                             </div>
                           </div>
                         </div>

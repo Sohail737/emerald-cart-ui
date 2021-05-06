@@ -34,7 +34,6 @@
 }
 
 .heading {
-  /* width: 30%; */
 }
 
 :global(.nav) {
@@ -97,11 +96,6 @@
     justify-content: flex-start;
   }
 
-  /* :global(.badge) {
-    top: 0;
-    right: 0;
-    background-color: red;
-  } */
   .navPills {
     display: none;
   }

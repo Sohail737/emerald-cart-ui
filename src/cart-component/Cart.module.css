@@ -11,8 +11,6 @@
   
   .cart{
       margin-top:8rem;
-      /* background-color:  rgb(230 220 220 / 29%);
-      height:100vh; */
   }
   
   .cartContainer{
@@ -128,18 +126,6 @@
       padding-left: 2rem;
   }
   
-  
-  
-  /* .cart-button{
-      border-radius:50%;
-      background-color: var(--white);
-      border:1px solid var(--black);
-      margin:0 1rem;
-      width:2rem;
-      height:2rem;
-      font-size: large;
-      cursor:pointer
-  } */
   
   .cartQuantity{
       font-size:larger ;

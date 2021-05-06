@@ -31,11 +31,7 @@ export const Navigation = ({}) => {
         <nav className={styles.heading}>
           <ul className="nav">
             <li className="nav-item">
-              {/* <a
-              className={styles.cartWishlist}
-              onClick={() => routeHandler(routeNames.productList)}
-            >
-            </a> */}
+              
               <NavLink to="/" className={styles.navPills}>
                 <svg width="1em" height="1em" viewBox="0 0 24 24">
                   <path
@@ -43,15 +39,11 @@ export const Navigation = ({}) => {
                     fill="currentColor"
                   ></path>
                 </svg>
-                {/* <span>ProductList</span> */}
+               
               </NavLink>
             </li>
             <li className="nav-item">
-              {/* <a
-              className={styles.cartWishlist}
-              onClick={() => routeHandler(routeNames.productList)}
-            >
-            </a> */}
+             
               <NavLink to="/products" className={styles.navPills}>
                 <svg width="1em" height="1em" viewBox="0 0 24 24">
                   <path
@@ -59,17 +51,11 @@ export const Navigation = ({}) => {
                     fill="currentColor"
                   ></path>
                 </svg>
-                {/* <span>ProductList</span> */}
               </NavLink>
             </li>
 
             <li className="nav-item">
-              {/* <a
-              className={styles.cartWishlist}
-              onClick={() => routeHandler(routeNames.wishlist)}
-            >
               
-            </a> */}
               <NavLink to="/wishlist" className={styles.cartWishlist}>
                 <svg width="1em" height="1em" viewBox="0 0 24 24">
                   <path
@@ -77,19 +63,13 @@ export const Navigation = ({}) => {
                     fill="currentColor"
                   ></path>
                 </svg>
-                {/* <span>Wishlist</span> */}
                 {wishlistLength > 0 && isUserLoggedIn && (
                   <span className="badge">{wishlistLength}</span>
                 )}
               </NavLink>
             </li>
             <li className="nav-item">
-              {/* <a
-              className={styles.cartWishlist}
-              onClick={() => routeHandler(routeNames.cart)}
-            >
-             
-            </a> */}
+              
               <NavLink to="/cart" className={styles.cartWishlist}>
                 <svg width="1em" height="1em" viewBox="0 0 24 24">
                   <path
@@ -97,7 +77,6 @@ export const Navigation = ({}) => {
                     fill="currentColor"
                   ></path>
                 </svg>
-                {/* <span>Cart</span> */}
                 {cartLength > 0 && isUserLoggedIn && <span className="badge">{cartLength}</span>}
               </NavLink>
             </li>

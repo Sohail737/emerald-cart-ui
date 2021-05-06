@@ -57,7 +57,7 @@ export const NavigationAside = ({ isAsideOpen, setIsAsideOpen }) => {
                   className={styles.asideNavPills}
                 >
                   <div className="list-item-left">{comp.svg}</div>
-                  {/* <span>ProductList</span> */}
+                
                   {comp.name}
                 </NavLink>
               </li>

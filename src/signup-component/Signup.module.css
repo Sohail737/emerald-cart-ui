@@ -25,7 +25,6 @@
 
 .signupInput {
   composes: loginInput from "../login-component/Login.module.css";
-  /* width:100%; */
 }
 
 .inputContainer {
@@ -34,8 +33,6 @@
 
 .signupButton {
   composes: loginButton from "../login-component/Login.module.css";
-  /* width:100%;
-      margin-bottom: 1rem; */
 }
 
 .error {
@@ -51,6 +48,5 @@
 
 .loginLink {
   composes: signupLink from "../login-component/Login.module.css";
-  /* color:var(--primary-color);
-      text-decoration: none; */
+ 
 }
