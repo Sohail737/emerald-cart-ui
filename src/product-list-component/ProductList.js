@@ -31,14 +31,12 @@ export const ProductList = ({}) => {
   useEffect(() => {
     (async () => {
       try {
-        // const response = await axios.get("/api/products");
         dispatchAppState({ type: "PRODUCT_PAGE_LOADING" });
         const response = await callApi(
           "https://e-com-backend.asohail737.repl.co/products",
           null,
           "get"
         );
-        console.log({ response });
         if (response.status === 200) {
           dispatchAppState({ type: "PRODUCT_PAGE_SUCCESS" });
           setProductList(response.data.data);
@@ -53,24 +51,11 @@ export const ProductList = ({}) => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   return () => dispatchToast({ type: "TOGGLE_TOAST", payload: false });
-  // }, []);
 
   let filteredData = [];
 
-  // const {
-  //   showAllInventory,
-  //   showFastDeliveryOnly,
-  //   genre,
-  //   author,
-  //   sortBy,
-  // } = useFilter();
-
   const query = new URLSearchParams(useLocation().search);
   const queryString = `?${decodeURI(query)}`;
-  // query=decodeURI(query);
-  console.log({ queryString });
   const sortBy = query.get("sortBy");
   let genre = query.get("genre");
   if (genre !== null && genre !== "") {
@@ -269,96 +254,6 @@ export const ProductList = ({}) => {
     }
   };
 
-  const addToCart = async (product) => {
-    try {
-      if (
-        cart &&
-        cart.filter((item) => item.product._id === product._id).length > 0 &&
-        cart.filter((item) => item.product._id === product._id)[0]["wishlisted"]
-      ) {
-        let cartId = cart.filter(
-          (itemInWishlist) => itemInWishlist.product._id === product._id
-        )[0]["_id"];
-        dispatchAppState({
-          type: "CART_IN_PRODUCT_LOADING",
-          payload: { id: product._id },
-        });
-        const response = await callApi(
-          `https://e-com-backend.asohail737.repl.co/cart-items/${cartId}`,
-          {
-            wishlisted: false,
-          },
-          "post"
-        );
-
-        if (response.status === 200) {
-          dispatchToast({
-            type: "TOAST_TYPE",
-            payload: { toastType: "success" },
-          });
-          dispatchToast({
-            type: "TOAST_MESSAGE",
-            payload: { toastMessage: "Added to cart" },
-          });
-          dispatchToast({ type: "TOGGLE_TOAST", payload: true });
-          dispatchAppState({
-            type: "CART_IN_PRODUCT_SUCCESS",
-            payload: { id: product._id },
-          });
-          dispatchToCartAndWishlist({
-            type: "ADD_TO_CART",
-            payload: response.data.data,
-          });
-        }
-      } else {
-        dispatchAppState({
-          type: "CART_IN_PRODUCT_LOADING",
-          payload: { id: product._id },
-        });
-        const response = await callApi(
-          "https://e-com-backend.asohail737.repl.co/cart-items",
-          {
-            product: product._id,
-            wishlisted: false,
-            quantity: 1,
-          },
-          "post"
-        );
-        if (response.status === 201) {
-          dispatchToast({
-            type: "TOAST_TYPE",
-            payload: { toastType: "success" },
-          });
-          dispatchToast({
-            type: "TOAST_MESSAGE",
-            payload: { toastMessage: "Added to cart" },
-          });
-          dispatchToast({ type: "TOGGLE_TOAST", payload: true });
-          dispatchAppState({
-            type: "CART_IN_PRODUCT_SUCCESS",
-            payload: { id: product._id },
-          });
-          dispatchToCartAndWishlist({
-            type: "ADD_TO_CART",
-            payload: response.data.data,
-          });
-        }
-      }
-    } catch (error) {
-      dispatchToast({ type: "TOAST_TYPE", payload: { toastType: "error" } });
-      dispatchToast({
-        type: "TOAST_MESSAGE",
-        payload: { toastMessage: "Some error occurred" },
-      });
-      dispatchToast({ type: "TOGGLE_TOAST", payload: true });
-      dispatchAppState({
-        type: "CART_IN_PRODUCT_ERROR",
-        payload: { id: product._id },
-      });
-      console.log("Error while saving to cart", error);
-    }
-  };
-
   filteredData = getfilteredData(
     showAllInventory,
     showFastDeliveryOnly,
@@ -367,8 +262,6 @@ export const ProductList = ({}) => {
     genre,
     productList
   );
-
-  console.log({ filteredData });
 
   const sortedData = getSortedData(sortBy, filteredData);
 
@@ -398,7 +291,6 @@ export const ProductList = ({}) => {
           <div className={styles.productList}>
             {sortedData.map((product) => {
               return (
-                // <div className="card-div">
                 <div
                   onClick={() => navigate(`/products/${product._id}`)}
                   key={product._id}

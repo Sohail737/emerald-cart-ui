@@ -5,9 +5,6 @@ import { useEffect } from "react";
 export const AccountDetail = () => {
     const {name,email,logoutUser}=useAuth()
     
-    useEffect(()=>{
-        
-    },[])
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Account Detail</h3>

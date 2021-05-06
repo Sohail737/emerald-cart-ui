@@ -43,7 +43,6 @@ export const NavigationAside = ({ isAsideOpen, setIsAsideOpen }) => {
       <div
         onClick={(e) => {
           setIsAsideOpen((isAsideOpen) => !isAsideOpen);
-          // e.stopPropagation();
         }}
         className={isAsideOpen ? styles.asideOverlayOpen : styles.asideOverlay}
       ></div>

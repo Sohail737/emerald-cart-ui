@@ -20,8 +20,6 @@ const toastReducer = (state, action) => {
 };
 
 export const ToastProvider = ({ children }) => {
-//   const [showToast, setShowToast] = useState(false);
-
   const [{showToast, toastType,toastMessage}, dispatchToast] = useReducer(toastReducer, initialState);
 
   return (

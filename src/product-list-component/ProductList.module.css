@@ -1,11 +1,9 @@
-/* @import "https://emerald-css.netlify.app/emerald.css"; */
-
 :root {
   --primary-color: rgb(102, 51, 153);
   --secondary-color: rgb(147, 197, 253);
   --white: rgb(255, 255, 255);
   --grey: rgb(175, 168, 168);
-  --light-grey: #ebebeb;
+  --light-grey: rgb(224, 215, 215);
   --black: rgb(0, 0, 0);
   --red: rgb(253, 2, 2);
 }
@@ -17,8 +15,8 @@
   grid-gap: 2rem;
   margin: auto;
   margin-top: 8rem;
-  padding:0.5rem;
-  margin-left:2rem
+  padding: 0.5rem;
+  margin-left: 2rem;
 }
 
 .card-sub-heading {
@@ -71,7 +69,7 @@
 
 .productCard:hover {
   box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%),
-  0 1px 18px 0 rgb(0 0 0 / 12%);
+    0 1px 18px 0 rgb(0 0 0 / 12%);
 }
 
 .productCard .wishlistBadge::before {
@@ -92,13 +90,13 @@
     grid-template-columns: 1fr;
     grid-column-gap: 0.5rem;
     grid-template-areas: "product";
-    margin-bottom:5rem;
+    margin-bottom: 5rem;
   }
   .productList {
     grid-template-columns: 1fr 1fr;
     grid-gap: 0.5rem;
     padding: 0.5rem;
-    margin-left:0;
+    margin-left: 0;
   }
 
   .filterButtonContainer {
@@ -113,8 +111,8 @@
     z-index: 5;
     background-color: var(--white);
     visibility: visible;
-    box-shadow:  0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%),
-    0 1px 18px 0 rgb(0 0 0 / 12%);
+    box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%),
+      0 1px 18px 0 rgb(0 0 0 / 12%);
   }
 
   .filterButton {

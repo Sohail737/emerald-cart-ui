@@ -22,22 +22,8 @@ export const Filter = ({
   showFilter,
   setShowFilter,
 }) => {
-  // const {
-  //   showAllInventory,
-  //   showFastDeliveryOnly,
-  //   genre,
-  //   author,
-  //   sortBy,
-  //   dispatch,
-  // } = useFilter();
 
   const navigate = useNavigate();
-  // let queryString = ``;
-  // showAllInventory=showAllInventory===null || showAllInventory===""?true:showAllInventory==="true"?true:false;
-  // showFastDeliveryOnly=showFastDeliveryOnly===null || showFastDeliveryOnly===""?false:showFastDeliveryOnly==="true"?true:false;
-  console.log("showAllInventory in filter", showAllInventory);
-  console.log("showFastDeliveryOnly in filter", showFastDeliveryOnly);
-
   const filterProductList = (action) => {
     switch (action.type) {
       case "TOGGLE_INVENTORY":
@@ -82,7 +68,6 @@ export const Filter = ({
       <div
         onClick={(e) => {
           setShowFilter((showFilter) => !showFilter);
-          // e.stopPropagation();
         }}
         className={showFilter ? styles.filterOverlayOpen : styles.filterOverlay}
       ></div>
@@ -92,7 +77,6 @@ export const Filter = ({
           <select
             className={styles.select}
             onChange={
-              // (e) => dispatch({ type: "SORT", payload: e.target.value })
               (e) =>
                 filterProductList({ type: "SORT", payload: e.target.value })
             }
@@ -115,7 +99,6 @@ export const Filter = ({
                   type="checkbox"
                   checked={showAllInventory}
                   onChange={
-                    // () => dispatch({ type: "TOGGLE_INVENTORY" })
                     (e) =>
                       filterProductList({
                         type: "TOGGLE_INVENTORY",
@@ -132,7 +115,6 @@ export const Filter = ({
                   type="checkbox"
                   checked={showOffersOnly}
                   onChange={
-                    // () => dispatch({ type: "TOGGLE_INVENTORY" })
                     (e) =>
                       filterProductList({
                         type: "SHOW_OFFERS_ONLY",
@@ -149,7 +131,6 @@ export const Filter = ({
                   type="checkbox"
                   checked={showFastDeliveryOnly}
                   onChange={
-                    // () => dispatch({ type: "TOGGLE_DELIVERY" })
                     (e) =>
                       filterProductList({
                         type: "TOGGLE_DELIVERY",
@@ -171,7 +152,6 @@ export const Filter = ({
                       type="checkbox"
                       checked={genre.length > 0 && genre.includes(item)}
                       onChange={
-                        // () =>dispatch({ type: "GENRE", payload: { genre: item } })
                         () =>
                           filterProductList({ type: "GENRE", payload: item })
                       }
@@ -193,7 +173,6 @@ export const Filter = ({
                       type="checkbox"
                       checked={author.length > 0 && author.includes(item)}
                       onChange={
-                        // () =>dispatch({ type: "AUTHOR", payload: { author: item } })
                         () =>
                           filterProductList({ type: "AUTHOR", payload: item })
                       }

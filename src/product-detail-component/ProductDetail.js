@@ -29,7 +29,6 @@ export const ProductDetail = () => {
   useEffect(() => {
     (async () => {
       try {
-        // const response = await axios.get("/api/cartItems");
         dispatchAppState({ type: "PRODUCT_PAGE_LOADING" });
         const response = await callApi(
           `https://e-com-backend.asohail737.repl.co/products/${productId}`,

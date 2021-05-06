@@ -85,7 +85,7 @@ export const Signup = () => {
         });
       }
     } catch (err) {
-      console.log("error while signup", err);
+      console.log("Error while signup", err);
     }
   };
 

@@ -20,15 +20,13 @@ import { PrivateRoute } from "./PrivateRoutes";
 
 function App() {
   const { cartAndWishlistState, dispatchToCartAndWishlist } = useCartAndWishlist();
-  // const [route, setRoute] = useState("productList");
-  // const [productList, setProductList] = useState([]);
+
   const { callApi } = useAxios();
   const {toastMessage,toastType}=useToast();
 
   useEffect(() => {
     (async () => {
       try {
-        // const response = await axios.get("/api/cartItems");
         const response = await callApi("https://e-com-backend.asohail737.repl.co/cart-items", null, "get");
         if (response.status === 200) {
           dispatchToCartAndWishlist({
@@ -50,9 +48,6 @@ function App() {
     <div className="App">
       <Navigation/>
       <Toast message={toastMessage} type={toastType} duration={3000} />
-      {/* {route === routeNames.productList && <ProductList route={route} setRoute={setRoute} />}
-      {route === routeNames.cart && <Cart />}
-      {route === routeNames.wishlist && <Wishlist setRoute={setRoute}/>} */}
       
       <Routes>
         <Route path="/" element={<Home/>}></Route>

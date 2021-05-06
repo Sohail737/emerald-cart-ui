@@ -25,10 +25,6 @@ const cartPriceReducer = (state, action) => {
     }, 0),
   };
 
-  // return cart.reduce((acc,curr)=>{
-  //   return{...acc,price:acc.price+curr.price,discountedPrice:acc.discountedPrice+discountCalc(curr.price,curr.discount)}
-
-  // },initialObj)
 };
 
 const cartAndWishlistReducer = (state, action) => {

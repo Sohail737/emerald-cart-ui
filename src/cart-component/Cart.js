@@ -181,7 +181,7 @@ export const Cart = () => {
         dispatchToast({ type: "TOGGLE_TOAST", payload: true });
       }
     } catch (err) {
-      console.log("err while deleting from cart", err);
+      console.log("Error while deleting from cart", err);
       dispatchAppState({
         type: "CART_ERROR",
         payload: { id },
